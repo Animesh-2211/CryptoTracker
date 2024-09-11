@@ -1,7 +1,8 @@
 import { LinearProgress, Typography, useMediaQuery, useTheme } from "@mui/material";
 import axios from "axios";
+import parse from 'html-react-parser';
 import { useEffect, useState } from "react";
-import ReactHtmlParser from "react-html-parser";
+
 import { useParams } from "react-router-dom";
 import { SingleCoin } from "../config/api";
 import { CryptoState } from "../CryptoContext";
@@ -46,7 +47,7 @@ const CoinPage = () => {
 
       {/* Coin Description */}
       <Typography variant="subtitle1" sx={{ width: "100%", fontFamily: "Montserrat", padding: 2, paddingBottom: 1, paddingTop: 0, textAlign: "justify" }}>
-        {ReactHtmlParser(coin?.description.en.split(". ")[0])}
+        {parse(coin?.description.en.split(". ")[0])}
       </Typography>
 
       {/* Market Data */}
